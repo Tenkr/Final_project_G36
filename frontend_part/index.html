@@ -26,6 +26,21 @@
         </section>
         <section>
             <header><h2 class="section-title">Task</h2></header>
+            <select id = "year-section">
+                <option value="2022">2022</option>
+                <option value="2021">2021</option>
+                <option value="2020">2020</option>
+                <option value="2019">2019</option>
+            </select>
+            <select id = "course-dropdown">
+                
+            </select>
+            <button onclick="getallcourse_in_thisyear()">
+                getallcourse
+            </button>
+            <button onclick="createAssignmentTable()">
+                getallassignment
+            </button>
             <table class="main-table">
                 <thead>
                     <tr class="div_grid">
@@ -49,6 +64,24 @@
                     </tr>
                 </tfoot>
             </table>
+            <p>
+                check
+            </p>
+            <table class="main-table">
+                <thead>
+                    <tr id="main-table-head">
+                        <th>Id</th>
+                        <th>Title</th>
+                    </tr>
+                </thead>
+                <tbody id="main-table-body-course">
+                    <tr id=0>
+                        <td>...</td>
+                        <td>...</td>
+                    </tr>
+                </tbody>
+            </table>
+
         </section>
         <section class="section-center">
             <button class="button change-page-button" onclick="window.location.href='login.html'">Go to MyCourseville API Login Page</button>

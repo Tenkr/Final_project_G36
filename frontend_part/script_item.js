@@ -162,7 +162,72 @@ const getUserProfile = async () => {
     .catch((error) => console.error(error));
 };
 
-let arr_course = [];
+const getallcourse_in_thisyear = async()=>{
+    const year_data = document.getElementById("year-section").value;
+    const year_drop_down = document.getElementById("course-dropdown");
+    year_drop_down.innerHTML += "<option value='0'>status</option>";
+    console.log(year_data);
+
+    const options = {
+      method: "GET",
+      credentials: "include",
+    };
+    await fetch(
+      `http://${backendIPAddress}/courseville/get_courses`,
+      options
+    )
+    .then((response) => response.json())
+    .then((data) => data.data.student)
+    .then((course) =>{
+
+       let len = Object.keys(course).length;
+       console.log(len)
+       console.log(course)
+       for(let i = 0 ; i < len ; i++){
+          if(course[i].year == year_data){
+            year_drop_down.innerHTML += `"<option value = ${course[i].cv_cid}>" ${course[i].cv_cid} + "</option>"`;
+          }
+       }
+      
+    })
+    .catch((error) => console.error(error));
+};
+const createAssignmentTable = async () => {
+  let items; 
+  
+  const table_body = document.getElementById("main-table-body-course");
+  table_body.innerHTML = "";
+  const cv_cid = document.getElementById("course-dropdown").value;
+  const options = {
+    method: "GET",
+    credentials: "include",
+  };
+  await fetch(
+    `http://${backendIPAddress}/courseville/get_course_assignments/ ${cv_cid}`,
+    options
+  )
+  .then((response) => response.json())
+  .then((data) => {
+      items = data.data;
+  })
+  .catch((error) => console.error(error)); 
+  /* console.log(items)
+  console.log(items.length)
+  let arrid = []
+  let arrtype = [] */
+  console.log(items)
+  items.map((item) => {
+     table_body.innerHTML += `
+     <tr>
+         <td>${item.itemid}</td>
+         <td>${item.title}</td>
+     </tr>
+     ` 
+  })
+}
+
+
+
 // TODO #3.3: Send Get Courses ("GET") request to backend server and filter the response to get Comp Eng Ess CV_cid
 //            and display the result on the webpage
 const getCompEngEssCid = async () => {
@@ -200,6 +265,7 @@ const getCompEngEssCid = async () => {
 //            and create Comp Eng Ess assignments table based on the response (itemid, title)
 const createCompEngEssAssignmentTable = async () => {
   let items; 
+
   const table_body = document.getElementById("main-table-body");
   table_body.innerHTML = "";
   const cv_cid = document.getElementById("ces-cid-value").innerHTML;

@@ -162,10 +162,29 @@ const getUserProfile = async () => {
     .catch((error) => console.error(error));
 };
 
+
+const getStudent_id = async () => {
+  const options = {
+    method: "GET",
+    credentials: "include",
+  };
+  await fetch(
+    `http://${backendIPAddress}/courseville/get_profile_info`,
+    options
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data.user);
+      document.getElementById("student-task-id").innerHTML = `${data.user.lastname_en};`
+    })
+    .catch((error) => console.error(error));
+};
 const getallcourse_in_thisyear = async()=>{
     const year_data = document.getElementById("year-section").value;
     const year_drop_down = document.getElementById("course-dropdown");
-    year_drop_down.innerHTML += "<option value='0'>status</option>";
+    const semister_dropdown_data = document.getElementById("semister-dropdown").value;
+    year_drop_down.innerHTML = " "; // modify 169 170
+    //year_drop_down.innerHTML += "<option value='0'>status</option>";
     console.log(year_data);
 
     const options = {
@@ -184,7 +203,7 @@ const getallcourse_in_thisyear = async()=>{
        console.log(len)
        console.log(course)
        for(let i = 0 ; i < len ; i++){
-          if(course[i].year == year_data){
+          if(course[i].year == year_data && course[i].semester == semister_dropdown_data){
             year_drop_down.innerHTML += `"<option value = ${course[i].cv_cid}>" ${course[i].cv_cid} + "</option>"`;
           }
        }
@@ -296,3 +315,10 @@ const createCompEngEssAssignmentTable = async () => {
      ` 
   })
 }
+
+
+const logout = async () => {
+  window.location.href = `http://${backendIPAddress}/courseville/logout`;
+};
+
+document.getElementById("group-id").innerHTML = getGroupNumber();

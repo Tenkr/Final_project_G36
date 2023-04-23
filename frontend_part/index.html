@@ -16,7 +16,10 @@
             }
         </style>
     </head>
-    <body>
+    <body onload="getStudent_id()">
+        <div>
+            <p>student id : <span id="student-task-id"></span></p>
+        </div>
         <section>
             <header><h1 id="app-name">รายการฝากซื้อ Group  <span id="group-no"></span> </h1></header>
         </section>
@@ -32,8 +35,12 @@
                 <option value="2020">2020</option>
                 <option value="2019">2019</option>
             </select>
-            <select id = "course-dropdown">
-                
+            <select id = "course-dropdown">   
+            </select>
+            <select id="semister-dropdown">
+                <option value="1"> 1 semester</option>
+                <option value="2"> 2 semester</option>
+                <option value="3"> 3 semester</option>
             </select>
             <button onclick="getallcourse_in_thisyear()">
                 getallcourse
@@ -81,7 +88,7 @@
                     </tr>
                 </tbody>
             </table>
-
+            <button class="button logout-button" onclick=logout()>Logout</button>
         </section>
         <section class="section-center">
             <button class="button change-page-button" onclick="window.location.href='login.html'">Go to MyCourseville API Login Page</button>

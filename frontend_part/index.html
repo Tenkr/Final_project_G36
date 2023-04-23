@@ -45,10 +45,16 @@
                 display: grid;
                
             }
+            .info-div{
+                background-color: rgb(244, 80, 80);
+                margin-left: 500px;
+                margin-right: 500px;
+                padding: 20px;
+            }
         </style>
     </head>
     <body onload="getStudent_id()">
-        <div>
+        <div class="info-div">
             <p>student id : <span id="student-task-id"></span></p>
         </div>
         <section>
@@ -101,34 +107,33 @@
                         getallassignment
                     </button>
                 </div>
+
+                <table class="main-table">
+                    <thead>
+                        <tr id="main-table-head">
+                            <th>Id</th>
+                            <th>Title</th>
+                        </tr>
+                    </thead>
+                    <tbody id="main-table-body-course">
+                        <tr id=0>
+                            <td>...</td>
+                            <td>...</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             
-            <p>
-                check
-            </p>
-            <table class="main-table">
-                <thead>
-                    <tr id="main-table-head">
-                        <th>Id</th>
-                        <th>Title</th>
-                    </tr>
-                </thead>
-                <tbody id="main-table-body-course">
-                    <tr id=0>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
-                </tbody>
-            </table>
-            <button class="button logout-button" onclick=logout()>Logout</button>
+    
+            
         </section>
         <section class="section-center">
-            <button class="button change-page-button" onclick="window.location.href='login.html'">Go to MyCourseville API Login Page</button>
-             <button class="button login-button" onclick=authorizeApplication()>Login</button>
+            <div class="info-div">
+                <button class="button login-button" onclick=authorizeApplication()>Login</button>
+                <button class="button logout-button" onclick=logout()>Logout</button>
+            </div>
+             
         </section>
 
-        <section class="section-credit">
-            &#169; 2110221 Computer Engineering Essentials (2022/2) &#169;
-        </section>
     </body>
 </html>

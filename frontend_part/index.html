@@ -2,17 +2,48 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>รายการฝากซื้อ</title>
+        <title>Task manager</title>
         <link rel="stylesheet" href="style.css"></link>
         <script src="script_item.js" defer>
         </script>
         <style>
+            body{
+                background-color: rgb(240, 240, 240);
+            }
             .div_grid{
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr 100px;
             }
             .complete{
                 width: 300px;
+            }
+            .content-container{
+                background-color: rgb(249, 217, 73);
+            }
+            .table-contro-button{
+                border-radius: 8px;
+                padding: 5px 10px;
+                border: 1px solid #aaa;
+                background: white;
+                width: 200px;
+                cursor: pointer;
+                font-family: "Mitr", sans-serif;
+                font-size: 1em;
+            }
+            .table-contro-button:hover{
+                background: rgb(255, 200, 105);
+                color: white;
+            }
+            .select-contro-button{
+                padding: 5px 10px;
+                border-radius: 8px;
+                border: 1px solid #aaa;
+                font-family: "Mitr", sans-serif;
+                font-size: 1em;
+            }
+            .grid-content{
+                display: grid;
+               
             }
         </style>
     </head>
@@ -21,56 +52,57 @@
             <p>student id : <span id="student-task-id"></span></p>
         </div>
         <section>
-            <header><h1 id="app-name">รายการฝากซื้อ Group  <span id="group-no"></span> </h1></header>
-        </section>
-        <section>
-            <header><h2 class="section-title">รายชื่อผู้มีสิทธิฝากซื้อ</h2><span class="section-subtitle">(สมาชิกในกลุ่ม)</span></header>
-            <ul id="member-list"> </ul>
-        </section>
-        <section>
             <header><h2 class="section-title">Task</h2></header>
-            <select id = "year-section">
-                <option value="2022">2022</option>
-                <option value="2021">2021</option>
-                <option value="2020">2020</option>
-                <option value="2019">2019</option>
-            </select>
-            <select id = "course-dropdown">   
-            </select>
-            <select id="semister-dropdown">
-                <option value="1"> 1 semester</option>
-                <option value="2"> 2 semester</option>
-                <option value="3"> 3 semester</option>
-            </select>
-            <button onclick="getallcourse_in_thisyear()">
-                getallcourse
-            </button>
-            <button onclick="createAssignmentTable()">
-                getallassignment
-            </button>
-            <table class="main-table">
-                <thead>
-                    <tr class="div_grid">
-                        <th>Task name</th>
-                        <th>Status</th>
-                        <th>Deadline</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody id="main-table-body">
-                </tbody>
-                <tfoot>
-                    <tr id="newrow-form" class="div_grid">
-                        <td><input id="item-to-add" type="text"/></td>
-                        <td>
-                            <select id="name-to-add">
-                            </select>
-                        </td>
-                        <td><input id="price-to-add" type="number"/></td>
-                        <td><button id="add-newrow" onclick=addItem()>new</button></td>
-                    </tr>
-                </tfoot>
-            </table>
+
+
+            <div class="content-container">
+                <table class="main-table" >
+                    <thead>
+                        <tr class="div_grid">
+                            <th>Task name</th>
+                            <th>Status</th>
+                            <th>Deadline</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="main-table-body">
+                    </tbody>
+                    <tfoot>
+                        <tr id="newrow-form" class="div_grid">
+                            <td><input id="item-to-add" type="text"/></td>
+                            <td>
+                                <select id="name-to-add">
+                                </select>
+                            </td>
+                            <td><input id="price-to-add" type="number"/></td>
+                            <td><button id="add-newrow" onclick=addItem()>new</button></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <div class="">
+                    
+                    <select id = "year-section" class="select-contro-button">
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                    </select>
+                    <select id = "course-dropdown" class="select-contro-button">   
+                    </select>
+                    <select id="semister-dropdown" class="select-contro-button">
+                        <option value="1"> 1 semester</option>
+                        <option value="2"> 2 semester</option>
+                        <option value="3"> 3 semester</option>
+                    </select>
+                    <button onclick="getallcourse_in_thisyear()" class="table-contro-button">
+                        getallcourse
+                    </button>
+                    <button onclick="createAssignmentTable()" class="table-contro-button">
+                        getallassignment
+                    </button>
+                </div>
+            </div>
+            
             <p>
                 check
             </p>

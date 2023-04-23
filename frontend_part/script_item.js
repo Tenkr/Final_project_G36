@@ -10,14 +10,14 @@ const getGroupNumber = () => {
 
 // TODO #2.2: Show group members
 const showGroupMembers = async () => {
-  const member_list = document.getElementById("member-list");
-  member_list.innerHTML = "";
+  /* const member_list = document.getElementById("member-list");
+  member_list.innerHTML = ""; */
   const member_dropdown = document.getElementById("name-to-add");
   member_dropdown.innerHTML =
     "<option value='0'>status</option>";
   const members = ["Not Started" , "In Progess" , "Waiting on Someone"];
       members.map((member) => {
-        member_list.innerHTML += "<li>" + member + "</li>";
+        //member_list.innerHTML += "<li>" + member + "</li>";
         // ----------------- FILL IN YOUR CODE UNDER THIS AREA ONLY ----------------- //
         member_dropdown.innerHTML += "<option>" + member + "</option>";
         // ----------------- FILL IN YOUR CODE ABOVE THIS AREA ONLY ----------------- //
@@ -121,7 +121,6 @@ const redrawDOM = () => {
   document.getElementById("price-to-add").value = "";
 };
 
-document.getElementById("group-no").innerHTML = getGroupNumber();
 
 document.addEventListener("DOMContentLoaded", async function (event) {
   console.log("Showing group members.");
@@ -204,7 +203,7 @@ const getallcourse_in_thisyear = async()=>{
        console.log(course)
        for(let i = 0 ; i < len ; i++){
           if(course[i].year == year_data && course[i].semester == semister_dropdown_data){
-            year_drop_down.innerHTML += `"<option value = ${course[i].cv_cid}>" ${course[i].cv_cid} + "</option>"`;
+            year_drop_down.innerHTML += `"<option value = ${course[i].cv_cid}>" ${course[i].title} + "</option>"`;
           }
        }
       

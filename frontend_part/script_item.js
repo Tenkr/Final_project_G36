@@ -203,7 +203,7 @@ const getallcourse_in_thisyear = async()=>{
        console.log(course)
        for(let i = 0 ; i < len ; i++){
           if(course[i].year == year_data && course[i].semester == semister_dropdown_data){
-            year_drop_down.innerHTML += `"<option value = ${course[i].cv_cid}>" ${course[i].title} + "</option>"`;
+            year_drop_down.innerHTML += `"<option value = ${course[i].cv_cid}> ${course[i].title} </option>"`;
           }
        }
       
@@ -243,78 +243,6 @@ const createAssignmentTable = async () => {
      ` 
   })
 }
-
-
-
-// TODO #3.3: Send Get Courses ("GET") request to backend server and filter the response to get Comp Eng Ess CV_cid
-//            and display the result on the webpage
-const getCompEngEssCid = async () => {
-  const options = {
-    method: "GET",
-    credentials: "include",
-  };
-  await fetch(
-    `http://${backendIPAddress}/courseville/get_courses`,
-    options
-  )
-  .then((response) => response.json())
-  .then((data) => data.data.student)
-  .then((course) =>{
-     let len = Object.keys(course).length;
-     console.log(len)
-     console.log(course)
-     for(let i = 0 ; i < len ; i++){
-        if(course[i].course_no === "2110221"){
-           document.getElementById("ces-cid-value").innerHTML = course[i].cv_cid; 
-           break; 
-        }
-     }
-    
-  })
-  .catch((error) => console.error(error));
-
-  /* document.getElementById("ces-cid-value").innerHTML = "";
-  console.log(
-    "This function should fetch 'get courses' route from backend server and find cv_cid value of Comp Eng Ess."
-  ); */
-};
-
-// TODO #3.5: Send Get Course Assignments ("GET") request with cv_cid to backend server
-//            and create Comp Eng Ess assignments table based on the response (itemid, title)
-const createCompEngEssAssignmentTable = async () => {
-  let items; 
-
-  const table_body = document.getElementById("main-table-body");
-  table_body.innerHTML = "";
-  const cv_cid = document.getElementById("ces-cid-value").innerHTML;
-  const options = {
-    method: "GET",
-    credentials: "include",
-  };
-  await fetch(
-    `http://${backendIPAddress}/courseville/get_course_assignments/ ${cv_cid}`,
-    options
-  )
-  .then((response) => response.json())
-  .then((data) => {
-      items = data.data;
-  })
-  .catch((error) => console.error(error)); 
-  /* console.log(items)
-  console.log(items.length)
-  let arrid = []
-  let arrtype = [] */
-  console.log(items)
-  items.map((item) => {
-     table_body.innerHTML += `
-     <tr>
-         <td>${item.itemid}</td>
-         <td>${item.title}</td>
-     </tr>
-     ` 
-  })
-}
-
 
 const logout = async () => {
   window.location.href = `http://${backendIPAddress}/courseville/logout`;

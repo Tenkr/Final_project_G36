@@ -43,6 +43,7 @@
             }
             .grid-content{
                 display: grid;
+                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
                
             }
             .info-div{
@@ -51,6 +52,11 @@
                 margin-right: 500px;
                 padding: 20px;
             }
+            .margin-fix{
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+            
         </style>
     </head>
     <body onload="getStudent_id()">
@@ -58,7 +64,7 @@
             <p>student id : <span id="student-task-id"></span></p>
         </div>
         <section>
-            <header><h2 class="section-title">Task</h2></header>
+            <header><h2 class="section-title">Task Manager</h2></header>
 
 
             <div class="content-container">
@@ -85,8 +91,26 @@
                         </tr>
                     </tfoot>
                 </table>
-                <div class="">
-                    
+                
+                <div>
+                    All Assignment
+                </div>
+                <div class="grid-content">
+                    <div>
+                        Year
+                    </div>
+                    <div>
+                        Subject
+                    </div>
+                    <div>
+                        semester
+                    </div>
+                    <div>
+                        
+                    </div>
+                    <div>
+                        
+                    </div>
                     <select id = "year-section" class="select-contro-button">
                         <option value="2022">2022</option>
                         <option value="2021">2021</option>

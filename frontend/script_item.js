@@ -1,5 +1,5 @@
 // TODO #4.0: Change this IP address to EC2 instance public IP address when you are going to deploy this web application
-const backendIPAddress = "127.0.0.1:3000";
+const backendIPAddress = "44.198.255.12:3000";
 
 let itemsData;
 
@@ -174,7 +174,8 @@ const getStudent_id = async () => {
     .then((response) => response.json())
     .then((data) => {
       console.log(data.user);
-      document.getElementById("student-task-id").innerHTML = `${data.user.lastname_en};`
+      document.getElementById("firstname-task-id").innerHTML = `${data.user.firstname_en}`
+      document.getElementById("lastname-task-id").innerHTML = `${data.user.lastname_en}`
     })
     .catch((error) => console.error(error));
 };
@@ -221,7 +222,7 @@ const createAssignmentTable = async () => {
     credentials: "include",
   };
   await fetch(
-    `http://${backendIPAddress}/courseville/get_course_assignments/ ${cv_cid}`,
+    `http://${backendIPAddress}/courseville/get_course_assignments/ ${cv_cid} &detail=1 `,
     options
   )
   .then((response) => response.json())
@@ -239,6 +240,7 @@ const createAssignmentTable = async () => {
      <tr>
          <td>${item.itemid}</td>
          <td>${item.title}</td>
+         <td>${item.outdate}</td>
      </tr>
      ` 
   })
@@ -249,3 +251,4 @@ const logout = async () => {
 };
 
 document.getElementById("group-id").innerHTML = getGroupNumber();
+document.getElementById("logout-btn").addEventListener("click", logout);

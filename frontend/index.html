@@ -6,65 +6,22 @@
         <link rel="stylesheet" href="style.css"></link>
         <script src="script_item.js" defer>
         </script>
-        <style>
-            body{
-                background-color: rgb(240, 240, 240);
-            }
-            .div_grid{
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr 100px;
-            }
-            .complete{
-                width: 300px;
-            }
-            .content-container{
-                background-color: rgb(249, 217, 73);
-            }
-            .table-contro-button{
-                border-radius: 8px;
-                padding: 5px 10px;
-                border: 1px solid #aaa;
-                background: white;
-                width: 200px;
-                cursor: pointer;
-                font-family: "Mitr", sans-serif;
-                font-size: 1em;
-            }
-            .table-contro-button:hover{
-                background: rgb(255, 200, 105);
-                color: white;
-            }
-            .select-contro-button{
-                padding: 5px 10px;
-                border-radius: 8px;
-                border: 1px solid #aaa;
-                font-family: "Mitr", sans-serif;
-                font-size: 1em;
-            }
-            .grid-content{
-                display: grid;
-                grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-               
-            }
-            .info-div{
-                background-color: rgb(244, 80, 80);
-                margin-left: 500px;
-                margin-right: 500px;
-                padding: 20px;
-            }
-            .margin-fix{
-                margin-top: 0px;
-                margin-bottom: 0px;
-            }
-            
-        </style>
     </head>
     <body onload="getStudent_id()">
         <div class="info-div">
-            <p>student id : <span id="student-task-id"></span></p>
+            <p>first name : <span id="firstname-task-id"></span></p>
+            <p>last name : <span id="lastname-task-id"></span></p>
         </div>
         <section>
-            <header><h2 class="section-title">Task Manager</h2></header>
+            <header align="center">
+                <table style="width: 94%;" class="title-table" align="center">
+                    <tr>
+                        <td><h1 class="section-title">TASK MANAGER</h1></td>
+                    </tr>
+                </table>
+            
+            
+            </header>
 
 
             <div class="content-container">
@@ -97,7 +54,7 @@
                 </div>
                 <div class="grid-content">
                     <div>
-                        Year
+                        Year    
                     </div>
                     <div>
                         Subject
@@ -137,6 +94,7 @@
                         <tr id="main-table-head">
                             <th>Id</th>
                             <th>Title</th>
+                            <th>outdate</th>
                         </tr>
                     </thead>
                     <tbody id="main-table-body-course">
@@ -151,13 +109,13 @@
     
             
         </section>
-        <section class="section-center">
+        <footer class="section-center">
             <div class="info-div">
                 <button class="button login-button" onclick=authorizeApplication()>Login</button>
                 <button class="button logout-button" onclick=logout()>Logout</button>
             </div>
              
-        </section>
+        </footer>
 
     </body>
 </html>
